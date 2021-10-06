@@ -1,0 +1,20 @@
+[
+	{
+		"title": "Old Couch",
+        "description": "we just bought a new one and need it gone",
+        "image": "https://images.unsplash.com/photo-1603844908699-ff22c77bece8?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8b2xkJTIwY291Y2h8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+        "zip": 28133
+	},
+	{
+		"title": "Old Chair",
+        "description": "we are moving and don't need it anymore",
+        "image": "https://images.unsplash.com/photo-1526542129713-497ab18153b1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1174&q=80",
+        "zip": 18004
+	},
+	{
+		"title": "Old bike",
+        "description": "this bike has been around for generations but is in perfect working condition",
+        "image": "https://images.unsplash.com/photo-1596685298951-20d1d2e18ff0?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1074&q=80",
+        "zip": 90210
+	}
+]
