@@ -1,11 +1,17 @@
-const mongoose = require('./db/connection');
+const mongoose = require('../db/connection');
 
 const ItemSchema = new mongoose.Schema({
-    title: String,
-    description: String,
-    image: String,
-    zip: Number   
+	title: String,
+	description: String,
+	image: String,
+	zip: Number,
+	owner: {
+		type: mongoose.Schema.Types.ObjectID,
+		ref: 'User',
+		required: true,
+	},
 });
 
-const Item = mongoose.model(em', ')
+const Item = mongoose.model('Item', ItemSchema);
+
 module.exports = Item;
