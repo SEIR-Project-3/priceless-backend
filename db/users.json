@@ -1,0 +1,17 @@
+[
+	{
+		"username": "esaribudak",
+		"email": "esin@cats.com",
+        "password": "ilovecats"
+	},
+	{
+		"username": "cgodoy",
+		"email": "carlos@crypto.com",
+        "password": "ilovecrypto"
+	},
+	{
+		"username": "skitajima",
+		"email": "shaw@running.com",
+        "password": "iloverunning"
+	}
+]
