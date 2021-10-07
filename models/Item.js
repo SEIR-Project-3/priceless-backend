@@ -1,4 +1,4 @@
-const mongoose = require('../db/connection');
+const mongoose = require('../db/connections');
 
 const ItemSchema = new mongoose.Schema({
 	title: String,
@@ -8,7 +8,7 @@ const ItemSchema = new mongoose.Schema({
 	owner: {
 		type: mongoose.Schema.Types.ObjectID,
 		ref: 'User',
-		required: true,
+		// required: true,
 	},
 });
 

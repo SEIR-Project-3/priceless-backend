@@ -15,10 +15,10 @@ app.get('/', (req, res) => {
 });
 
 // Controllers
-const itemsController = require('./controller/itemsController');
+const itemsController = require('./controllers/itemsController');
 app.use('/api/items', itemsController);
 
-const usersController = require('./controller/usersController');
+const usersController = require('./controllers/usersController');
 app.use('/api/users', usersController);
 
 // Start Server

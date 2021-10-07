@@ -53,6 +53,7 @@ router.post('/signin', async (req, res, next) => {
 });
 
 
+
 router.patch('/users/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;

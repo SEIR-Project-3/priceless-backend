@@ -1,3 +1,5 @@
+// RETRIEVE FILE FROM AUTH MARKDOWN ////////
+
 const passport = require('passport');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -25,7 +27,7 @@ const opts = {
 };
 
 // Require the user model
-const User = require('../db/models/user_model');
+const User = require('../models/User');
 
 // We're configuring the strategy using the constructor from passport
 // so we call new and pass in the options we set in the `opts` variable.
