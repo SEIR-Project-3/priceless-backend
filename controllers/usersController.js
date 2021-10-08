@@ -19,7 +19,7 @@ const { createUserToken } = require('../middleware/auth');
 
 router.get('/users', async (req, res, next) => {
 	try {
-		const users = await User.find(req.body);
+		const users = await User.find();
 		res.status(200).json(users);
 	} catch (error) {
 		next(error);
@@ -32,19 +32,20 @@ router.post('/signup', async (req, res, next) => {
 	try {
 		const password = await bcrypt.hash(req.body.password, 10);
 		const user = await User.create({
-			user: req.body.username,
+			username: req.body.username,
 			email: req.body.email,
 			password
 		});
+		res.status(201).json(user);
 	} catch (error) {
-		
+		next(error);
 	}
 });
 
 // SIGN IN
 router.post('/signin', async (req, res, next) => {
 	try {
-		const user = await User.findOne({ user: req.body.username });
+		const user = await User.findOne({ username: req.body.username });
 		const token = await createUserToken(req, user);
 		res.json({ token })
 	} catch (error) {
@@ -54,20 +55,21 @@ router.post('/signin', async (req, res, next) => {
 
 
 
-router.patch('/users/:id', async (req, res, next) => {
+router.put('/user/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
-		const user = await User.findByIdAndUpdate(id, { new: true });
+		const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+		res.status(200).json(user);
 	} catch (error) {
 		next(error);
 	}
 });
 
-router.delete('/users/:id', async (req, res, next) => {
+router.delete('/user/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
-		const user = await User.findByIdAndDelete(id);
-		res.status(204);
+		const user = await User.findByIdAndDelete({ _id: id });
+		res.json(user);
 	} catch (error) {
 		next(error);
 	}

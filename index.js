@@ -19,7 +19,7 @@ const itemsController = require('./controllers/itemsController');
 app.use('/api/items', itemsController);
 
 const usersController = require('./controllers/usersController');
-app.use('/api/users', usersController);
+app.use('/api', usersController);
 
 // Start Server
 app.listen(app.get('port'), () => {
