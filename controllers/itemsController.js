@@ -32,7 +32,7 @@ router.get('/:id', async (req, res, next) => {
 	}
 });
 
-router.post('/', requireToken, async (requireToken, req, res, next) => {
+router.post('/', async (req, res, next) => {
 	try {
 		const newItem = await Item.create(req.body);
 		res.status(201).json(newItem);
@@ -41,7 +41,7 @@ router.post('/', requireToken, async (requireToken, req, res, next) => {
 	}
 });
 
-router.put('/:id', requireToken, async (requireToken, req, res, next) => {
+router.put('/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
 		const item = await Item.findByIdAndUpdate(id, req.body, {new:true});
@@ -51,18 +51,14 @@ router.put('/:id', requireToken, async (requireToken, req, res, next) => {
 	}
 });
 
-router.delete(
-	'/:id',
-	requireToken,
-	async (requireToken, req, res, next) => {
-		try {
-			const id = req.params.id;
-			const deleted = await Item.findByIdAndDelete({_id : id });
-			res.json(deleted);
-		} catch (error) {
-			next(error);
-		}
+router.delete('/:id', async (req, res, next) => {
+	try {
+		const id = req.params.id;
+		const deleted = await Item.findByIdAndDelete({_id : id });
+		res.json(deleted);
+	} catch (error) {
+		next(error);
 	}
-);
+});
 
 module.exports = router;
