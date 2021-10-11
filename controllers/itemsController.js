@@ -61,4 +61,13 @@ router.delete('/:id', async (req, res, next) => {
 	}
 });
 
+router.deleteMany('/user/:id', async (req, res, next) => {
+	try {
+		const items = await Item.find({ owner: { _id: req.params.id } });
+		res.json(items);
+	} catch (error) {
+		next(error);
+	}
+});
+
 module.exports = router;
