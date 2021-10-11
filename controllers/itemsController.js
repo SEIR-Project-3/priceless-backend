@@ -15,8 +15,8 @@ router.get('/', async (req, res, next) => {
 
 router.get('/user/:id', async (req, res, next) => {
 	try {
-		const item = await Item.find({username: req.params.id }).populate();
-		res.json(item);
+		const items = await Item.find({owner: {_id: req.params.id }});
+		res.json(items);
 	} catch (error) {
 		next(error);
 	}
