@@ -7,20 +7,22 @@ const User = require('../models/User');
 const { createUserToken } = require('../middleware/auth');
 
 
-// router.get('/', async (req, res, next) => {
-// 	try {
-// 		const users = await User.find();
-// 		res.status(200).json(users);
-// 	} catch (error) {
-// 		next(error);
-// 	}
-// });
-
-
+// GET ALL Users
 router.get('/users', async (req, res, next) => {
 	try {
 		const users = await User.find();
 		res.status(200).json(users);
+	} catch (error) {
+		next(error);
+	}
+});
+
+
+// GET ONE User
+router.get('/user/:id', async (req, res, next) => {
+	try {
+		const user = await User.findById(req.params.id);
+		res.status(200).json(user);
 	} catch (error) {
 		next(error);
 	}
@@ -47,14 +49,14 @@ router.post('/signin', async (req, res, next) => {
 	try {
 		const user = await User.findOne({ username: req.body.username });
 		const token = await createUserToken(req, user);
-		res.json({ token })
+		res.json({ token, user })
 	} catch (error) {
 		next(error);
 	}
 });
 
 
-
+// EDIT User
 router.put('/user/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
@@ -65,6 +67,7 @@ router.put('/user/:id', async (req, res, next) => {
 	}
 });
 
+// DELETE User
 router.delete('/user/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
