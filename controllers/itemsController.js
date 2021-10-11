@@ -6,12 +6,22 @@ const { requireToken } = require('../middleware/auth');
 
 router.get('/', async (req, res, next) => {
 	try {
-		const item = await Item.find();
+		const item = await Item.find().populate({path: "owner", select: "username email"} );
 		res.status(200).json(item);
 	} catch (error) {
 		next(error);
 	}
 });
+
+router.get('/user/:id', async (req, res, next) => {
+	try {
+		const item = await Item.find({username: req.params.id }).populate();
+		res.json(item);
+	} catch (error) {
+		next(error);
+	}
+});
+
 
 router.get('/:id', async (req, res, next) => {
 	try {

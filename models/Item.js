@@ -6,7 +6,7 @@ const ItemSchema = new mongoose.Schema({
 	image: String,
 	zip: Number,
 	owner: {
-		type: mongoose.Schema.Types.ObjectID,
+		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 		// required: true,
 	},
