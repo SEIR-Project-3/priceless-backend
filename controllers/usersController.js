@@ -57,15 +57,21 @@ router.post('/signin', async (req, res, next) => {
 
 
 // EDIT User
-router.put('/user/:id', async (req, res, next) => {
+router.patch('/user/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
-		const user = await User.findByIdAndUpdate(id, req.body, { new: true });
+		const password = await bcrypt.hash(req.body.password, 10);
+		const user = await User.findByIdAndUpdate(
+			id,
+			{ $set: { password: password } },
+			{ new: true }
+		);
 		res.status(200).json(user);
 	} catch (error) {
 		next(error);
 	}
 });
+
 
 // DELETE User
 router.delete('/user/:id', async (req, res, next) => {
