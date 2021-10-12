@@ -56,7 +56,7 @@ router.post('/signin', async (req, res, next) => {
 });
 
 
-// EDIT User
+
 router.patch('/user/:id', async (req, res, next) => {
 	try {
 		const id = req.params.id;
